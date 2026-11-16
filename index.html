@@ -93,6 +93,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(10,12,15,.88);backdrop-f
 .video .play{width:76px;height:76px;border-radius:50%;background:rgba(242,169,0,.14);border:2px solid var(--amber);display:grid;place-items:center}
 .video .play svg{margin-left:5px}
 .video p{color:var(--muted);font-size:15px}
+.video.has-video{border:1px solid var(--line);padding:0;background:#000;display:block}
 .video iframe,.video video{width:100%;height:100%;border:0;display:block}
 .center{text-align:center}.center .lead{margin-inline:auto}
 
@@ -206,10 +207,7 @@ footer{border-top:1px solid var(--line);padding-block:36px;color:var(--muted);fo
       <p class="eyebrow">See it work</p>
       <h2>A short look at Ironbridge</h2>
       <p class="lead">A quick walk through the system, from a new load to a paid invoice.</p>
-      <div class="video" id="video-slot">
-        <div class="play" aria-hidden="true"><svg width="26" height="28" viewBox="0 0 26 28"><path d="M2 2l22 12L2 26z" fill="#F2A900"/></svg></div>
-        <p>Video coming soon</p>
-      </div>
+      <div class="video has-video" id="video-slot"><video controls playsinline preload="metadata" poster="video-poster.jpg" aria-label="Ironbridge TMS walkthrough: rate confirmation, loads, invoices, settlements, fuel and reports"><source src="ironbridge-overview.mp4" type="video/mp4"></video></div>
     </div>
   </section>
 </div>
