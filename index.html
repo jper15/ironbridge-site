@@ -55,9 +55,18 @@ header{position:sticky;top:0;z-index:20;background:rgba(10,12,15,.88);backdrop-f
 @media(max-width:520px){.row{grid-template-columns:1fr auto;gap:6px 10px}.row .id{grid-column:1/-1}.row .lane{white-space:normal}.brand .name{font-size:24px}}
 
 /* hero */
-.hero{padding-top:clamp(48px,7vw,88px);padding-bottom:clamp(40px,6vw,72px);background:radial-gradient(900px 420px at 80% -10%,rgba(242,169,0,.10),transparent 60%)}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
-@media(max-width:940px){.hero-grid{grid-template-columns:1fr}}
+.hero{min-height:clamp(560px,82vh,760px);display:flex;align-items:center;position:relative;isolation:isolate;overflow:hidden;padding-top:clamp(48px,7vw,88px);padding-bottom:clamp(40px,6vw,72px);background:radial-gradient(900px 420px at 80% -10%,rgba(242,169,0,.10),transparent 60%),var(--bg)}
+/* Hero background: licensed photo (Axiom Images, order 10029) with a very slow drift. */
+.hero::before{content:"";position:absolute;inset:-4%;z-index:-2;background:url(hero-bridge.jpg) 72% 38%/cover no-repeat;animation:drift 45s ease-in-out infinite alternate;will-change:transform}
+@media(max-width:700px){.hero::before{background-image:url(hero-bridge-m.jpg)}}
+@keyframes drift{from{transform:scale(1) translate3d(0,0,0)}to{transform:scale(1.09) translate3d(-1.5%,-1%,0)}}
+.hero-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(10,12,15,.88) 0%,rgba(10,12,15,.66) 38%,rgba(10,12,15,.08) 78%,rgba(10,12,15,0) 100%),linear-gradient(180deg,rgba(10,12,15,.1) 65%,rgba(10,12,15,.7) 100%)}
+@media(max-width:940px){.hero-shade{background:linear-gradient(180deg,rgba(10,12,15,.78),rgba(10,12,15,.6) 60%,rgba(10,12,15,.85))}}
+@media(prefers-reduced-motion:reduce){.hero::before{animation:none}}
+.hero-grid{display:block;max-width:1120px;margin-inline:auto;padding-block:clamp(24px,5vw,64px)}
+.hero-grid>div{max-width:600px}
+.hero .wrap{display:block}
+.hero .hero-grid{width:100%}
 .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
 .note{font-size:14px;color:var(--muted);margin-top:16px}
 .hero h1 em{font-style:normal;color:var(--amber)}
@@ -77,6 +86,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(10,12,15,.88);backdrop-f
 .p-t{background:rgba(242,169,0,.14);color:#ffc94d}.p-d{background:rgba(47,191,113,.14);color:#5fe3a0}.p-p{background:rgba(120,140,255,.14);color:#aab6ff}.p-i{background:rgba(255,255,255,.08);color:#cfd5df}
 .caption{font:500 12px/1.4 var(--mono);color:var(--muted);margin-top:12px;text-align:center}
 
+.board-sec{padding-block:clamp(48px,7vw,80px)}
 /* video */
 .video-wrap{background:var(--bg2);border-block:1px solid var(--line)}
 .video{aspect-ratio:16/9;width:100%;max-width:900px;margin:36px auto 0;border-radius:16px;border:1px dashed #3a414d;background:linear-gradient(135deg,#12161c,#0d1014);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:20px;overflow:hidden}
@@ -144,6 +154,7 @@ footer{border-top:1px solid var(--line);padding-block:36px;color:var(--muted);fo
 <main id="top">
 
 <section class="hero">
+  <div class="hero-shade"></div>
   <div class="wrap hero-grid">
     <div>
       <p class="eyebrow">Transportation management for carriers</p>
@@ -155,7 +166,16 @@ footer{border-top:1px solid var(--line);padding-block:36px;color:var(--muted);fo
       </div>
       <p class="note">Questions first? Write to <a href="mailto:sales@ironbridgetms.com">sales@ironbridgetms.com</a> and a person answers.</p>
     </div>
-    <div>
+
+  </div>
+</section>
+
+<section class="board-sec">
+  <div class="wrap center">
+    <p class="eyebrow">Your load board</p>
+    <h2>Every load, in every stage, at a glance</h2>
+    <p class="lead">Booked, dispatched, in transit, delivered and invoiced, all in one list.</p>
+    <div style="max-width:720px;margin:36px auto 0;text-align:left">
       <div class="screen" role="img" aria-label="Sample load board with made-up loads in different stages">
         <div class="bar"><i></i><i></i><i></i><span>LOAD BOARD</span></div>
         <div class="rows">
